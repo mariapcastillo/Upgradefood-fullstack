@@ -1,0 +1,87 @@
+<!-- <div class="container mt-4">
+    <button class="btn btn-outline-warning mb-4" (click)="volver()">
+        <i class="bi bi-arrow-left me-2"></i>
+        {{ isAdmin ? 'Volver al Panel Admin' : 'Volver a mi Perfil' }}
+    </button>
+
+    <h2 class="text-white mb-4">{{ isAdmin ? 'Panel de Reservas (Admin)' : 'Mis Reservas' }}</h2>
+
+    <div class="lista-reservas">
+        @for (reserva of listaReservas; track reserva.id) {
+        <div class="card-reserva mb-3"
+            style="background-color: #242424; color: white; border-radius: 10px; padding: 15px;">
+            <div class="card-header d-flex justify-content-between border-0 bg-transparent">
+                <span class="fecha fw-bold">{{ reserva.fecha }}</span>
+                <span class="hora text-warning">{{ reserva.hora }} hs</span>
+            </div>
+            <div class="card-body">
+                <p class="mb-1"><strong>Comensales:</strong> {{ reserva.party_size }} personas</p>
+                <p class="mb-1"><strong>Mesa:</strong> #{{ reserva.mesa_id }}</p>
+                <span class="badge" [ngClass]="reserva.estado"
+                    [style.background-color]="reserva.estado === 'confirmada' ? '#28a745' : '#ffc107'"
+                    style="color: black;">
+                    {{ reserva.estado }}
+                </span>
+            </div>
+            @if (reserva.resena) {
+            <div class="card-footer bg-transparent border-top border-secondary mt-2 pt-2">
+                <small class="text-info italic">"{{ reserva.resena }}"</small>
+            </div>
+            }
+        </div>
+        } @empty {
+        <div class="text-center py-5">
+            <p class="empty-msg text-white-50 fs-5">No hay reservas registradas.</p>
+        </div>
+        }
+    </div>
+</div> -->
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-start mb-4">
+        <div>
+            <button class="btn btn-outline-warning mb-3" (click)="volver()">
+                <i class="bi bi-arrow-left me-2"></i>
+                {{ isAdmin ? 'Volver al Panel Admin' : 'Volver a mi Perfil' }}
+            </button>
+            <h2 class="text-white mb-0">{{ isAdmin ? 'Panel de Reservas (Admin)' : 'Mis Reservas' }}</h2>
+        </div>
+
+        <div class="mt-auto">
+            <button routerLink="/calendario" class="btn btn-warning fw-bold shadow-sm">
+                <i class="bi bi-calendar3 me-2"></i>
+                Ver Calendario de reservas
+            </button>
+        </div>
+    </div>
+
+    <div class="lista-reservas">
+        @for (reserva of listaReservas; track reserva.id) {
+        <div class="card-reserva mb-3"
+            style="background-color: #242424; color: white; border-radius: 10px; padding: 15px;">
+            <div class="card-header d-flex justify-content-between border-0 bg-transparent">
+                <span class="fecha fw-bold">{{ reserva.fecha }}</span>
+                <span class="hora text-warning">{{ reserva.hora | date: 'HH:mm' }} hs</span>
+            </div>
+            <div class="card-body">
+                <p class="mb-1"><strong>Comensales:</strong> {{ reserva.party_size }} personas</p>
+                <p class="mb-1"><strong>Mesa:</strong> #{{ reserva.mesa_id }}</p>
+                <span class="badge" [ngClass]="reserva.estado"
+                    [style.background-color]="reserva.estado === 'confirmada' ? '#28a745' : '#ffc107'"
+                    style="color: black;">
+                    {{ reserva.estado }}
+                </span>
+            </div>
+            @if (reserva.resena) {
+            <div class="card-footer bg-transparent border-top border-secondary mt-2 pt-2">
+                <small class="text-info italic">"{{ reserva.resena }}"</small>
+            </div>
+            }
+        </div>
+        } @empty {
+        <div class="text-center py-5">
+            <p class="empty-msg text-white-50 fs-5">No hay reservas registradas.</p>
+        </div>
+        }
+    </div>
+</div>

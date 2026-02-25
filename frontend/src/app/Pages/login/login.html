@@ -1,0 +1,45 @@
+<div class="login-wrapper d-flex justify-content-center align-items-center pt-2 pb-5">
+    <div class="login-container bg-dark text-white ps-5 pe-5 pb-5 pt-3 shadow-lg">
+
+        <div class="d-flex justify-content-end mb-0">
+            <button routerLink="/landing" class="btn btn-link text-white-50 text-decoration-none small p-0">
+                <i class="fa-solid fa-house me-1"></i> Inicio
+            </button>
+        </div>
+
+        <div class="text-center mb-4">
+            <h1 class="text-warning fw-bold">Login</h1>
+            <p class="text-white-50">Accede a tu panel de gestión</p>
+        </div>
+
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="mb-4">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" formControlName="email" placeholder="nombre@ejemplo.com">
+            </div>
+
+            <div class="mb-4 password">
+                <label class="form-label">Password</label>
+                <input [type]="inputType()" class="form-control" formControlName="password" placeholder="••••••••">
+                <button type="button" (click)="cambiarTipoInput()">
+                    <i class="fa-regular fa-eye"></i>
+                </button>
+            </div>
+            <div class="d-flex justify-content-end mb-3 mt-n2 container-olvido">
+                <button type="button" routerLink="/recuperar-password" class="btn-link-custom text-warning text-decoration-none small">¿Has olvidado tu contraseña?
+                </button>
+            </div>
+
+            <button type="submit" class="btn btn-warning w-100 fw-bold py-2 mt-1">
+                ENTRAR
+            </button>
+
+        </form>
+
+        <div class="text-center mt-3">
+            <button routerLink="/registro" class="text-warning text-decoration-none small btn-link-custom">
+                ¿No tienes cuenta? Regístrate aquí
+            </button>
+        </div>
+    </div>
+</div>

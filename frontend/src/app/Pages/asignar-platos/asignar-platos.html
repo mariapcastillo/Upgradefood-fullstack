@@ -1,0 +1,51 @@
+<div class="create-menu-container">
+    <div class="form-card animate__animated animate__fadeIn">
+        
+        <div class="header-section mb-4 text-center">
+            <h2 class="fw-bold text-dark">Configurar Menú <span class="text-warning">#{{menuId}}</span></h2>
+            <p class="text-muted">Selecciona los platos de la lista para añadirlos al menú</p>
+        </div>
+
+        <div class="platos-scroll-area">
+            @for (plato of listaPlatosDB; track plato.id) {
+                <div class="plato-item d-flex align-items-center justify-content-between p-3 mb-2">
+                    
+                    <div class="d-flex align-items-center gap-3">
+                        <img [src]="plato.imagen_url" class="rounded shadow-sm" alt="Imagen"
+                            style="width: 60px; height: 60px; object-fit: cover;">
+                        
+                        <div>
+                            <h6 class="mb-0 text-dark fw-bold">{{ plato.nombre }}</h6>
+                            <div class="small text-muted">
+                                <span class="badge bg-secondary me-1">{{ plato.categoria | uppercase }}</span>
+                                <span>{{ plato.precio }}€</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <select class="form-select form-select-sm w-auto" (change)="onRoleChange(plato, $event)">
+                        <option value="">-- Asignar --</option>
+                        <option value="entrante">Entrante</option>
+                        <option value="principal">Principal</option>
+                        <option value="postre">Postre</option>
+                    </select>
+                </div>
+            } @empty {
+                <div class="alert alert-info text-center">
+                    Cargando platos desde el servidor...
+                </div>
+            }
+        </div>
+
+        <div class="actions-footer mt-4 d-flex justify-content-between align-items-center pt-3 border-top">
+            <button class="btn btn-outline-secondary" (click)="cancelar()">
+                Cancelar
+            </button>
+
+            <button class="btn btn-save px-4" (click)="confirmarAsignacion()"
+                [disabled]="platosParaAsignar.length === 0">
+                Guardar Configuración
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,48 @@
+@host = http://127.0.0.1
+@port = 8000
+
+###GET ALL MENUS( recordar esto se ve en menus_semanales9)
+
+
+### ✅ GET menu por fecha (OK)
+GET {{host}}:{{port}}/menu/2024-05-22
+
+### ❌ GET menu por fecha (400 formato)
+GET {{host}}:{{port}}/menu/22-05-2024
+
+### ❌ GET menu por fecha (404 no existe)
+GET {{host}}:{{port}}/menu/2025-01-01
+
+### ======================================================
+### ✅ MENUS (admin)
+### ======================================================
+
+### ➕ POST crear menú (ADMIN)
+POST {{host}}:{{port}}/menu
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkByZXN0YXVyYW50ZS5jb20iLCJub21icmUiOiJBZG1pbiBQcmluY2lwYWwiLCJyb2wiOiJhZG1pbiIsImV4cCI6MTc3MDUzNjIzMH0.bB3oRMwo6I0dJVql02JqqYTd1ibO1JY_VIDCPl8j0z0
+Content-Type: application/json
+
+{
+  "fecha": "2026-02-20",
+  "nombre": "TEST - Menú semanal",
+  "descripcion": "Menú de prueba para comprobar POST/PUT/DELETE.",
+  "foto_url": "https://res.cloudinary.com/dej3mecyv/image/upload/v1770497579/Edamame_al_vapor_thqxap.jpg",
+  "precio": 19.90
+}
+
+### ✏️ PUT actualizar menú (ADMIN)
+PUT {{host}}:{{port}}/menu/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkByZXN0YXVyYW50ZS5jb20iLCJub21icmUiOiJBZG1pbiBQcmluY2lwYWwiLCJyb2wiOiJhZG1pbiIsImV4cCI6MTc3MDUzNjIzMH0.bB3oRMwo6I0dJVql02JqqYTd1ibO1JY_VIDCPl8j0z0
+Content-Type: application/json
+
+{
+  "fecha": "2026-02-20",
+  "nombre": "TEST - Menú semanal (Editado)",
+  "descripcion": "Pollo + guarnición + postre",
+  "foto_url": "https://res.cloudinary.com/dej3mecyv/image/upload/v1770497579/Edamame_al_vapor_thqxap.jpg",
+  "precio": 14.50
+}
+
+### 🗑 DELETE borrar menú (ADMIN)
+DELETE {{host}}:{{port}}/menu/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkByZXN0YXVyYW50ZS5jb20iLCJub21icmUiOiJBZG1pbiBQcmluY2lwYWwiLCJyb2wiOiJhZG1pbiIsImV4cCI6MTc3MDUzNjIzMH0.bB3oRMwo6I0dJVql02JqqYTd1ibO1JY_VIDCPl8j0z0

@@ -1,0 +1,100 @@
+<div class="page">
+    <div class="topbar">
+        <button class="btn-back" (click)="volver()">← Volver</button>
+        <h2 class="title">{{ isAdmin ? 'Gestión de Reseñas (Admin)' : 'Mis Reseñas' }}</h2>
+    </div>
+
+    @if (!isAdmin) {
+    <div class="hint">
+        <p><b>Info:</b> Esta vista está pensada para admin. (Puedes adaptarla para cliente luego)</p>
+    </div>
+    }
+
+    @if (isAdmin) {
+    <!-- Dashboard -->
+    <section class="admin-dashboard">
+        <div class="kpis">
+            <div class="kpi">
+                <div class="kpi-label">Promedio</div>
+                <div class="kpi-value">⭐ {{ stats.promedio }} / 5</div>
+            </div>
+            <div class="kpi">
+                <div class="kpi-label">Total reseñas</div>
+                <div class="kpi-value">{{ stats.total }}</div>
+            </div>
+        </div>
+
+        <div class="dist">
+            <div class="dist-title">Distribución por estrellas</div>
+
+            @for (s of [5,4,3,2,1]; track s) {
+            <div class="dist-row">
+                <div class="dist-left">{{ s }}★</div>
+                <div class="dist-bar">
+                    <div class="dist-fill" [style.width.%]="getBarPct(s)"></div>
+                </div>
+                <div class="dist-right">
+                    {{ getBarPct(s) }}% ({{ stats.porEstrellas[s-1] || 0 }})
+                </div>
+            </div>
+            }
+        </div>
+
+        <div class="quick-filters">
+            <button class="qbtn" [class.active]="filtroRapido==='all'" (click)="setFiltroRapido('all')">Todas</button>
+            <button class="qbtn" [class.active]="filtroRapido==='5'" (click)="setFiltroRapido('5')">5★</button>
+            <button class="qbtn" [class.active]="filtroRapido==='4'" (click)="setFiltroRapido('4')">4★</button>
+            <button class="qbtn" [class.active]="filtroRapido==='3menos'" (click)="setFiltroRapido('3menos')">3★ o
+                menos</button>
+            <button class="qbtn" [class.active]="filtroRapido==='negativas'"
+                (click)="setFiltroRapido('negativas')">Negativas</button>
+            <button class="qbtn" [class.active]="filtroRapido==='sinTexto'" (click)="setFiltroRapido('sinTexto')">Sin
+                texto</button>
+        </div>
+
+        <div class="filters-row">
+            <input class="search" type="text" placeholder="Buscar por comentario o cliente..." [(ngModel)]="filtroTexto"
+                (input)="aplicarFiltros()" />
+
+            <select class="select" [(ngModel)]="filtroRating" (change)="aplicarFiltros()">
+                <option [ngValue]="0">Todas</option>
+                <option [ngValue]="5">5 ⭐</option>
+                <option [ngValue]="4">4 ⭐</option>
+                <option [ngValue]="3">3 ⭐</option>
+                <option [ngValue]="2">2 ⭐</option>
+                <option [ngValue]="1">1 ⭐</option>
+            </select>
+
+            <select class="select" [(ngModel)]="orden" (change)="aplicarFiltros()">
+                <option value="fecha_desc">Más recientes</option>
+                <option value="fecha_asc">Más antiguas</option>
+            </select>
+        </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="cards">
+        @for (resena of resenasFiltradas; track resena.id) {
+        <article class="card">
+            <div class="card-head">
+                <div class="who">
+                    <div class="name">{{ resena.nombre || 'Cliente' }}</div>
+                    <div class="date">{{ resena.fecha }}</div>
+                </div>
+                <div class="rating">{{ resena.puntuacion }} ★</div>
+            </div>
+
+            <div class="comment">
+                {{ resena.comentario || '(Sin comentario)' }}
+            </div>
+
+            <div class="card-actions">
+                <button class="btn-small" (click)="verDetalle(resena)">Ver detalle</button>
+            </div>
+        </article>
+        } @empty {
+        <div class="empty">No hay reseñas para mostrar.</div>
+        }
+    </section>
+    }
+</div>

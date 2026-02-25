@@ -1,0 +1,43 @@
+@host = http://127.0.0.1
+@port = 8000
+
+### 1. OBTENER TODAS LAS MESAS
+#  qué mesa_id poner en la reserva
+GET {{host}}:{{port}}/mesas
+Content-Type: application/json
+
+###
+
+### 2. CREAR UNA NUEVA RESERVA
+# Prueba esto con una mesa_id que exista
+POST {{host}}:{{port}}/reservas
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsImVtYWlsIjoibGF1Lm1vbnRpcm9uaUBnbWFpbC5jb20iLCJub21icmUiOiJMYXVyYU9LICIsInJvbCI6ImNsaWVudGUiLCJleHAiOjE3NzEwMTk0MDR9.tHhnv-wPcj9ALOdHbRl-S8gYDqK6TGVqaAWzxZnU8u8
+
+{
+    "fecha": "2026-02-25",
+    "hora": "13:00",
+    "mesa_id": 2,
+    "party_size": 4,
+    "resena": "Alergia al marisco y una trona, por favor"
+}
+
+###
+
+### 3. VER MIS RESERVAS
+# Esto debería devolver solo las reservas del usuario del Token
+GET {{host}}:{{port}}/reservas/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJsYXVyYUBkZW1vLmNvbSIsIm5vbWJyZSI6IkxhdXJhIiwicm9sIjoiY2xpZW50ZSIsImV4cCI6MTc3MDcwOTYzOH0.lyA6ccVrb1QNuaZIJdX0gR-W66tPCatmHAkRnMevez0
+
+###
+
+### 4. CANCELAR UNA RESERVA
+# Cambia el ID del final por el ID de una reserva tuya
+DELETE {{host}}:{{port}}/reservas/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiZW1haWwiOiJsYXVyYUBkZW1vLmNvbSIsIm5vbWJyZSI6IkxhdXJhIiwicm9sIjoiY2xpZW50ZSIsImV4cCI6MTc3MDcwOTYzOH0.lyA6ccVrb1QNuaZIJdX0gR-W66tPCatmHAkRnMevez0
+
+###
+
+### 5. VER TODAS LAS RESERVAS (Solo Admin)
+GET {{host}}:{{port}}/reservas
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhZG1pbkByZXN0YXVyYW50ZS5jb20iLCJub21icmUiOiJBZG1pbiBQcmluY2lwYWwiLCJyb2wiOiJhZG1pbiIsImV4cCI6MTc3MDgwODIxNX0.9O0mWj__-Ac_Ai1ZL_VV21VjeVEHkP_cv3Wczitej3g

@@ -1,0 +1,98 @@
+<div class="wrap">
+    <div class="card">
+        <div class="head">
+            <button class="btn-back" type="button" (click)="volver()">← Volver</button>
+            <h2>Mis datos</h2>
+            <p class="sub">Revisa y actualiza tu información personal.</p>
+        </div>
+
+        <!-- ===== DATOS PERSONALES ===== -->
+        <form [formGroup]="form" (ngSubmit)="guardarDatos()">
+            <div class="grid">
+                <div class="field">
+                    <label>Nombre</label>
+                    <input type="text" formControlName="nombre" />
+                </div>
+
+                <div class="field">
+                    <label>Apellido</label>
+                    <input type="text" formControlName="apellido" />
+                </div>
+
+                <div class="field">
+                    <label>DNI</label>
+                    <input type="text" formControlName="dni" />
+                </div>
+
+                <div class="field">
+                    <label>Email</label>
+                    <input type="text" formControlName="email" />
+                </div>
+
+                <div class="field">
+                    <label>Teléfono</label>
+                    <input type="text" formControlName="telefono" />
+                </div>
+
+                <div class="field">
+                    <label>Edad</label>
+                    <input type="number" formControlName="edad" />
+                </div>
+
+                <div class="field full">
+                    <label>Alergias</label>
+                    <textarea rows="3" formControlName="alergias"></textarea>
+                </div>
+
+                <div class="field full">
+                    <label>Rol</label>
+                    <input type="text" formControlName="rol" />
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn-save" type="submit" [disabled]="loadingDatos || form.invalid">
+                    {{ loadingDatos ? 'Guardando...' : 'Guardar cambios' }}
+                </button>
+            </div>
+        </form>
+
+        <!-- ===== SEPARADOR ===== -->
+        <div class="divider"></div>
+
+        <!-- ===== CAMBIAR CONTRASEÑA ===== -->
+        <div class="head2">
+            <h3>Cambiar contraseña</h3>
+            <p class="sub2">No necesitas cerrar sesión. La próxima vez que entres, usarás la nueva contraseña.</p>
+        </div>
+
+        <form [formGroup]="passForm" (ngSubmit)="cambiarPassword()">
+            <div class="grid">
+                <div class="field full">
+                    <label>Contraseña actual</label>
+                    <input type="password" formControlName="current_password" />
+                </div>
+
+                <div class="field">
+                    <label>Nueva contraseña</label>
+                    <input type="password" formControlName="new_password" />
+                </div>
+
+                <div class="field">
+                    <label>Repetir nueva contraseña</label>
+                    <input type="password" formControlName="repeat_password" />
+                </div>
+            </div>
+
+            <div class="actions">
+                <button class="btn-outline" type="button" (click)="passForm.reset()" [disabled]="loadingPass">
+                    Limpiar
+                </button>
+
+                <button class="btn-save" type="submit" [disabled]="loadingPass || passForm.invalid">
+                    {{ loadingPass ? 'Actualizando...' : 'Actualizar contraseña' }}
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

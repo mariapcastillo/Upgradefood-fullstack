@@ -1,0 +1,80 @@
+
+
+<section class="py-5 menus-section">
+    <div class="container">
+
+        @if (isAdmin()) {
+        <button routerLink="/admin-dashboard" class="btn btn-outline-warning mb-4">
+            <i class="bi bi-arrow-left me-2"></i> Volver a todos los menús
+        </button>
+        } @else {
+        <button routerLink="/menus" class="btn btn-outline-warning mb-4">
+            <i class="bi bi-arrow-left me-2"></i> Volver a menús
+        </button>
+        }
+
+        @if (menuSeleccionado()) {
+
+        <app-card-menu [datos]="menuSeleccionado()!" (onVerPlato)="verEspecificaciones($event)" />
+
+        @if (isAdmin()) {
+        <div class="mt-5 p-4 admin-panel">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h3 class="text-white mb-0">
+                    Gestión de <span class="menus-accent">Platos</span>
+                </h3>
+
+                <button class="btn btn-warning fw-bold"
+                    [routerLink]="['/admin/asignar-platos', menuSeleccionado()?.menu?.id]"
+                    [queryParams]="{returnUrl: '/menus/' + menuSeleccionado()?.menu?.id}">
+                    <i class="bi bi-plus-circle me-2"></i> Añadir Platos
+                </button>
+            </div>
+
+            <div class="table-responsive">
+                <table class="table table-dark table-hover align-middle">
+                    <thead>
+                        <tr class="admin-table-head">
+                            <th>Plato</th>
+                            <th>Rol</th>
+                            <th class="text-end">Acciones</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @for (plato of platosDelMenu(); track plato.id) {
+                        <tr>
+                            <td class="text-white">{{ plato.nombre }}</td>
+                            <td>
+                                <span class="badge bg-secondary text-uppercase">{{ plato.rol }}</span>
+                            </td>
+                            <td class="text-end">
+                                <button (click)="quitarPlato($any(plato).id)" class="btn btn-outline-danger btn-sm">
+                                    <i class="bi bi-trash"></i> Quitar
+                                </button>
+                            </td>
+                        </tr>
+                        } @empty {
+                        <tr>
+                            <td colspan="3" class="text-center py-4">
+                                No hay platos asignados a este menú todavía.
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        }
+
+        } @else {
+
+        <div class="loading-wrap">
+            <div class="spinner-border text-warning" role="status" aria-label="Cargando"></div>
+            <p class="text-white-50 mt-3 mb-0">Cargando menú...</p>
+        </div>
+
+        }
+
+    </div>
+</section>

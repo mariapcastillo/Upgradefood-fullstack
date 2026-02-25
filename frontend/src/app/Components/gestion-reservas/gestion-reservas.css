@@ -1,0 +1,108 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background: #121212;
+    color: #e6dcc9;
+    padding: 40px 20px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+h2 {
+    color: #ffc107;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom: 2px solid rgba(255, 193, 7, 0.2);
+    padding-bottom: 15px;
+}
+
+.lista-reservas {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 25px;
+}
+
+.card-reserva {
+    background: #1d1d1d;
+    border-radius: 18px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+    /* Borde fino y sutil en todo el contorno */
+    border: 1px solid rgba(230, 220, 201, 0.1);
+    transition: all 0.4s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* EFECTO HOVER */
+.card-reserva:hover {
+    transform: translateY(-8px);
+    border-color: #ffc107;
+    /* El borde se ilumina en dorado */
+    box-shadow: 0 15px 35px rgba(255, 193, 7, 0.1);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(230, 220, 201, 0.1);
+    padding-bottom: 12px;
+    color: #ffc107;
+    font-weight: bold;
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    width: fit-content;
+}
+
+/* Estados con fondo suave y borde */
+.confirmada {
+    background: rgba(40, 167, 69, 0.1);
+    color: #28a745;
+    border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+.cancelada {
+    background: rgba(220, 53, 69, 0.1);
+    color: #dc3545;
+    border: 1px solid rgba(220, 53, 69, 0.2);
+}
+
+.card-footer {
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(230, 220, 201, 0.1);
+    color: #ffc107;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.empty-msg {
+    text-align: center;
+    padding: 50px;
+    background: #1d1d1d;
+    border-radius: 18px;
+    color: #aaa;
+    border: 1px dashed rgba(230, 220, 201, 0.2);
+    grid-column: 1 / -1;
+}

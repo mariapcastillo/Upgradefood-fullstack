@@ -1,0 +1,50 @@
+<div class="perfil-container">
+
+    <div class="container-sm h-100 d-flex flex-column">
+
+        <!-- Header -->
+        <div class="text-center mb-4 flex-shrink-0">
+            <h1 class="mb-2">¡Hola, {{ nombreUsuario }} {{ apellidoUsuario }}!</h1>
+            <p class="text-muted">Bienvenido/a a tu panel de control</p>
+        </div>
+
+        <!-- Grid de opciones -->
+        <div class="row g-3 flex-grow-1 align-items-center justify-content-center mb-4">
+
+            <div class="col-md-4 d-flex">
+                <div class="card-custom w-100" (click)="irAEfectuarReserva()">
+                    <div class="card-icon">📅</div>
+                    <h5>Efectuar Reserva</h5>
+                    <p class="small text-truncate">Realiza una nueva reserva</p>
+                    <button class="btn btn-gold w-100">Ir a Reservar</button>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex">
+                <div class="card-custom w-100" (click)="irAVerReservas()">
+                    <div class="card-icon">📋</div>
+                    <h5>Ver Mis Reservas</h5>
+                    <p class="small text-truncate">Consulta todas tus reservas</p>
+                    <button class="btn btn-gold w-100">Ver Reservas - Escribir Reseñas</button>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex">
+                <div class="card-custom w-100" (click)="irAMisDatos()">
+                    <div class="card-icon">👤</div>
+                    <h5>Mis Datos</h5>
+                    <p class="small text-truncate">Ver y editar mis datos</p>
+                    <button class="btn btn-gold w-100">Ver ficha</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center pt-3 border-top flex-shrink-0">
+            <button class="btn btn-outline-light" (click)="logout()">Cerrar Sesión</button>
+        </div>
+
+    </div>
+</div>
+
+

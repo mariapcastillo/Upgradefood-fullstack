@@ -1,0 +1,148 @@
+.nf-page {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: #0b0b0b;
+}
+
+/* Makis detrás */
+.nf-stage {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Cartel encima */
+.nf-hero {
+    position: relative;
+    z-index: 2;
+    width: 40%;
+    margin: 0 auto;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 28px;
+    padding: 70px 60px;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55)), #111;
+    box-shadow: 0 18px 55px rgba(0, 0, 0, 0.6);
+}
+
+.nf-title {
+    color: #e6dcc9;
+    font-size: clamp(60px, 6vw, 96px);
+    margin: 0;
+    font-weight: 900;
+}
+
+.nf-subtitle {
+    color: rgba(231, 225, 212, 0.85);
+    margin: 10px 0 25px;
+    font-weight: 600;
+}
+
+.pill {
+    border-radius: 999px;
+    padding: 12px 22px;
+    font-weight: 700;
+    border: 2px solid #e6dcc9;
+    background: #e6dcc9;
+    color: #111;
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+.pill:hover {
+    transform: scale(1.05);
+}
+
+/* --- MAKIS --- */
+.nf-maki {
+    position: absolute;
+    left: -180px;
+    width: 90px;
+    opacity: 0.9;
+    filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.6));
+    animation: move linear infinite;
+}
+
+/* Animación izquierda → derecha */
+@keyframes move {
+    from {
+        transform: translateX(-200px) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(calc(100vw + 400px)) rotate(360deg);
+    }
+}
+
+/* Animación derecha → izquierda (para algunos) */
+@keyframes moveReverse {
+    from {
+        transform: translateX(200px) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(calc(-100vw - 400px)) rotate(-360deg);
+    }
+}
+
+/* Salteados: top + delay + duration + tamaño + dirección */
+.nf-maki:nth-child(1) {
+    top: 8vh;
+    animation-duration: 10s;
+    animation-delay: -2s;
+    width: 80px;
+}
+
+.nf-maki:nth-child(2) {
+    top: 20vh;
+    animation-duration: 13s;
+    animation-delay: -7s;
+    width: 100px;
+    animation-name: moveReverse;
+    left: auto;
+    right: -180px;
+}
+
+.nf-maki:nth-child(3) {
+    top: 34vh;
+    animation-duration: 9s;
+    animation-delay: -4s;
+    width: 70px;
+}
+
+.nf-maki:nth-child(4) {
+    top: 48vh;
+    animation-duration: 15s;
+    animation-delay: -12s;
+    width: 110px;
+    animation-name: moveReverse;
+    left: auto;
+    right: -180px;
+}
+
+.nf-maki:nth-child(5) {
+    top: 62vh;
+    animation-duration: 11s;
+    animation-delay: -9s;
+    width: 85px;
+}
+
+.nf-maki:nth-child(6) {
+    top: 74vh;
+    animation-duration: 14s;
+    animation-delay: -5s;
+    width: 95px;
+    animation-name: moveReverse;
+    left: auto;
+    right: -180px;
+}
+
+.nf-maki:nth-child(7) {
+    top: 88vh;
+    animation-duration: 12s;
+    animation-delay: -10s;
+    width: 75px;
+}

@@ -1,0 +1,116 @@
+:host {
+    display: block;
+    min-height: 100vh;
+    background-color: #000000;
+    padding: 40px 20px;
+}
+
+/* Contenedor principal para centrar la tarjeta */
+.create-menu-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* La tarjeta del formulario */
+.form-card {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 20px;
+    width: 100%;
+    max-width: 600px;
+    /* Un poco más estrecho para menús queda más elegante */
+    border: 1px solid #333;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Título Dorado */
+h2 {
+    color: #ffc107;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom-color: rgba(255, 193, 7, 0.2) !important;
+}
+
+/* Etiquetas del formulario */
+.form-label {
+    color: #ffc107;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Inputs, Textareas y Selects */
+.form-control {
+    background-color: #242424;
+    border: 1px solid #444;
+    color: white !important;
+    padding: 10px;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: #666;
+}
+
+.form-control:focus {
+    background-color: #2a2a2a;
+    border-color: #ffc107;
+    color: white;
+    box-shadow: 0 0 0 0.25 margin-bottom rgba(255, 193, 7, 0.1);
+    outline: none;
+}
+
+/* El Switch de Publicar */
+.form-check-label {
+    color: #e6dcc9 !important;
+    /* El color crema que usas en otros sitios */
+    font-size: 0.95rem;
+}
+
+.form-check-input:checked {
+    background-color: #ffc107;
+    border-color: #ffc107;
+}
+
+/* Botón Guardar Estilo Dorado */
+.btn-save {
+    background-color: #ffc107;
+    color: black;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.btn-save:hover:not(:disabled) {
+    background-color: #e5ac00;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 193, 7, 0.3);
+}
+
+.btn-save:disabled {
+    background-color: #444;
+    color: #888;
+    cursor: not-allowed;
+}
+
+/* Botón Cancelar */
+.btn-link {
+    color: #aaa !important;
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.btn-link:hover {
+    color: #ffc107 !important;
+}
+
+/* Estilo para el input de fecha (especial en dark mode) */
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1) sepia(1) saturate(5) hue-rotate(10deg);
+    cursor: pointer;
+}

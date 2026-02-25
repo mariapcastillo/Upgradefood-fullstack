@@ -1,0 +1,36 @@
+/* Asegura fondo oscuro en TODA la página de este componente */
+:host {
+    display: block;
+    min-height: 100vh;
+    background: #0f0f0f;
+}
+
+/* El section ya no necesita pintar fondo propio */
+.menus-section {
+    background: transparent;
+}
+
+/* Panel admin */
+.admin-panel {
+    background: #1a1a1a;
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+}
+
+/* Acento */
+.menus-accent {
+    color: #d4af37;
+}
+
+/* Encabezado tabla */
+.admin-table-head {
+    color: #e6d7a6;
+}
+
+/* Loader centrado y con espacio */
+.loading-wrap {
+    min-height: 65vh;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}

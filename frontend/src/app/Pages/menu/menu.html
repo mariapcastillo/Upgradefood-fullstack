@@ -1,0 +1,63 @@
+
+
+<section class="py-5 menus-section">
+    <div class="container">
+
+            <div class="back-link">
+                <a class="back-btn" routerLink="/landing">
+                    <i class="bi bi-arrow-left me-2"></i> Volver
+                </a>
+            </div>
+
+        
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold text-white">
+                Nuestros <span class="menus-accent">Menús</span>
+            </h1>
+            <p class="text-white-50">
+                Descubre nuestras propuestas semanales preparadas con ingredientes frescos.
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center">
+            @for (menu of arrMenu(); track menu.id) {
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-lg text-center position-relative menu-card">
+
+                    <div class="position-absolute top-0 start-0 m-3">
+                        <span
+                            class="badge rounded-pill bg-warning text-dark px-3 py-2 shadow-sm fw-bold menu-date-badge">
+                            <i class="bi bi-calendar3 me-1"></i> {{ menu.fecha }}
+                        </span>
+                    </div>
+
+                    <div class="card-body p-4 d-flex flex-column">
+                        <h2 class="h3 card-title fw-bold text-white mt-5 mb-3">
+                            {{ menu.titulo }}
+                        </h2>
+
+                        <div class="mb-4">
+                            <span class="display-6 fw-bold menu-price">{{ menu.precio }}€</span>
+                        </div>
+
+                        <p class="text-white-50 mb-4">{{ menu.descripcion }}</p>
+
+                        <div class="mt-auto">
+                            <button class="btn w-100 py-3 fw-bold text-uppercase shadow-sm menu-cta" [routerLink]="['/menus', menu.id]">
+                                Ver Contenido
+                            </button>
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            } @empty {
+            <div class="text-center py-5">
+                <p class="text-white-50">No hay menús disponibles en este momento.</p>
+            </div>
+            }
+        </div>
+    </div>
+</section>
+

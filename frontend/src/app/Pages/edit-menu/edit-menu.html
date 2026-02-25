@@ -1,0 +1,52 @@
+<div class="create-menu-container">
+    <div class="form-card">
+        <button class="btn btn-outline-warning mb-4 btn-sm" (click)="volver()">
+            <i class="bi bi-arrow-left me-2"></i> Volver a Gestión
+        </button>
+
+        <h2 class="fw-bold mb-4 text-center border-bottom pb-2">Editar Menú #{{menuId}}</h2>
+
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+                <label class="form-label">Título</label>
+                <input type="text" class="form-control" formControlName="titulo">
+            </div>
+
+            <div class="row">
+                <div class="col-6 mb-3">
+                    <label class="form-label">Nº Menú</label>
+                    <input type="number" class="form-control" formControlName="numero">
+                </div>
+                <div class="col-6 mb-3">
+                    <label class="form-label">Precio (€)</label>
+                    <input type="number" class="form-control" formControlName="precio">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Fecha</label>
+                <input type="date" class="form-control" formControlName="fecha">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea class="form-control" formControlName="descripcion" rows="3"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" id="activoSwitch" formControlName="activo">
+                    <label class="form-check-label text-dark fw-bold" for="activoSwitch">
+                        Menú visible para clientes
+                    </label>
+                </div>
+            </div>
+
+            <div class="d-grid gap-2 mt-4">
+                <button type="submit" class="btn btn-save" [disabled]="form.invalid">
+                    Guardar Cambios
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

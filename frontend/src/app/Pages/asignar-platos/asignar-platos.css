@@ -1,0 +1,111 @@
+/* Contenedor Principal con el fondo oscuro que usas en toda la web */
+.create-menu-container {
+    min-height: 100vh;
+    background-color: #121212;
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Tarjeta Blanca para que el contenido destaque */
+.form-card {
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    width: 100%;
+    max-width: 800px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Área de scroll para que no se haga infinita la página */
+.platos-scroll-area {
+    max-height: 500px;
+    overflow-y: auto;
+    margin-top: 20px;
+    padding-right: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Personalización del Scrollbar (Estilo moderno) */
+.platos-scroll-area::-webkit-scrollbar {
+    width: 6px;
+}
+
+.platos-scroll-area::-webkit-scrollbar-thumb {
+    background: #ffc107;
+    border-radius: 10px;
+}
+
+/* Títulos de Categoría (Sashimi, Maki, etc.) */
+.category-title {
+    color: #ffc107;
+    background-color: #242424;
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 5px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+}
+
+/* Cada fila de plato */
+.plato-item {
+    background: #fdfdfd;
+    border: 1px solid #f0f0f0;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.plato-item:hover {
+    border-color: #ffc107;
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Imagen del plato */
+.plato-item img {
+    border-radius: 8px;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* El Selector (Select) */
+.form-select-sm {
+    border-radius: 8px;
+    border: 2px solid #eee;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.3s;
+}
+
+.form-select-sm:focus {
+    border-color: #ffc107;
+    box-shadow: none;
+}
+
+/* Botón de Guardar */
+.btn-save {
+    background-color: #242424;
+    color: #ffc107;
+    border: 2px solid #ffc107;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.btn-save:hover:not(:disabled) {
+    background-color: #ffc107;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.btn-save:disabled {
+    opacity: 0.5;
+    border-color: #666;
+    color: #666;
+}

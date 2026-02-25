@@ -1,0 +1,49 @@
+@host = http://127.0.0.1
+@port = 8000
+
+
+### ##➕ POST /auth/register se regustra por defecto como ocliente 
+
+POST {{host}}:{{port}}/auth/register
+Content-Type: application/json
+
+{
+  "nombre": "Laura",
+  "apellido": "Montironi",
+  "email": "laura@demo.com",
+  "telefono": "+34 600 000 000",
+  "edad": 25,
+  "alergias": "Sésamo",
+  "password": "Demo1234"
+}
+
+
+###🔑 POST /auth/login
+
+POST {{host}}:{{port}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "laura@demo.com",
+  "password": "Demo1234"
+}
+
+###🔑 POST /auth/login
+
+POST {{host}}:{{port}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "lau.montironi@gmail.com",
+  "password": "Deemo1234"
+}
+
+
+###  🔑 loguearse como admin para ver las rutas de post put en peticiones_meus delet e menu 
+POST {{host}}:{{port}}/auth/login
+Content-Type: application/json
+
+{
+  "email": "admin@restaurante.com",
+  "password": "admin123"
+}   

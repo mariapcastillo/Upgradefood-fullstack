@@ -1,0 +1,83 @@
+<header class="site-header">
+    <nav class="navbar">
+        <button class="hamburger" type="button" (click)="toggleMenu()" aria-label="Abrir menú" [class.open]="menuOpen">
+            <span></span><span></span><span></span>
+        </button>
+
+        <a class="brand" routerLink="/" aria-label="Home">
+            <img class="logo" src="assets/images/Captura de pantalla 2026-02-09 a las 14.16.55.jpeg" alt="Logo" />
+        </a>
+
+        <div class="right-actions">
+            <a class="pill" routerLink="/">Inicio</a>
+
+            @if (isLogged) {
+            @if (!isAdmin) {
+            <a class="pill" routerLink="/reserva">Reservar</a>
+            }
+
+            @if (isAdmin) {
+            <a class="pill" routerLink="/admin-dashboard" style="color: #ffc107;">Panel Admin</a>
+            } @else {
+            <a class="pill" routerLink="/perfil-usuario">Mi Cuenta</a>
+            }
+
+            <button class="pill btn-logout-nav" (click)="onLogout()">Cerrar Sesión</button>
+            } @else {
+            <a class="pill" routerLink="/login">Mi Cuenta</a>
+            }
+        </div>
+    </nav>
+
+    <div class="overlay" [class.show]="menuOpen" (click)="closeMenu()"></div>
+
+    <aside class="drawer" [class.open]="menuOpen" (click)="$event.stopPropagation()">
+        <div class="drawer-header">
+            <span class="drawer-title">Menú</span>
+            <button class="close" type="button" (click)="closeMenu()" aria-label="Cerrar menú">✕</button>
+        </div>
+
+        <ul class="drawer-links">
+            <li>
+                <a class="drawer-pill" routerLink="/" (click)="closeMenu()">Inicio</a>
+            </li>
+
+            <li>
+                <a class="drawer-pill" routerLink="/menus" (click)="closeMenu()">Carta</a>
+            </li>
+            <li>
+                <a class="drawer-pill" routerLink="/lista_platos" (click)="closeMenu()">Sugerencias</a>
+            </li>
+
+            <li class="divider"></li>
+
+            @if (isLogged) {
+            @if (!isAdmin) {
+            <li>
+                <a class="drawer-pill" routerLink="/reserva" (click)="closeMenu()">Efectuar Reserva</a>
+            </li>
+            }
+
+            @if (isAdmin) {
+            <li>
+                <a class="drawer-pill" routerLink="/admin-dashboard" (click)="closeMenu()">Panel Administración</a>
+            </li>
+            } @else {
+            <li>
+                <a class="drawer-pill" routerLink="/perfil-usuario" (click)="closeMenu()">Mi Perfil</a>
+            </li>
+            }
+
+            <li>
+                <a href="#" class="drawer-pill logout-text"
+                    (click)="onLogout(); $event.preventDefault(); closeMenu()">Cerrar Sesión</a>
+            </li>
+            } @else {
+            <li class="auth">
+                <a class="drawer-pill auth-pill" routerLink="/login" (click)="closeMenu()">Log in</a>
+                <a class="drawer-pill auth-pill" routerLink="/registro" (click)="closeMenu()">Registro</a>
+            </li>
+            }
+        </ul>
+    </aside>
+</header>

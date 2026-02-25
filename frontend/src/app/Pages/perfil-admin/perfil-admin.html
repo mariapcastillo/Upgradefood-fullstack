@@ -1,0 +1,65 @@
+<div class="perfil-container">
+    <div class="container-sm h-100 d-flex flex-column">
+
+        <div class="text-center mb-4 flex-shrink-0">
+            <h1 class="mb-2">Panel de Control: Administrador</h1>
+            <p class="text-muted">Gestión total del restaurante y configuración del sistema</p>
+        </div>
+
+        <div class="row g-3 flex-grow-1 align-items-center justify-content-center mb-4">
+
+            <div class="col-md-4 d-flex">
+                <div class="card-custom w-100" (click)="irAGestionarMenus()">
+                    <div class="card-icon">⚙️</div>
+                    <h5>Gestionar Menús</h5>
+                    <p class="small">Configura menús diarios y semanales</p>
+                    <button class="btn btn-gold w-100">Configurar Menús</button>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex">
+                <div class="card-custom w-100" (click)="irAGestionarPlatos()">
+                    <div class="card-icon">🍳</div>
+                    <h5>Gestión de Platos</h5>
+                    <p class="small">Añade, modifica o elimina platos de la carta</p>
+                    <button class="btn btn-gold w-100">Ver Carta</button>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex">
+                <div class="card-custom w-100" (click)="irAGestionarReservas()">
+                    <div class="card-icon">📅</div>
+                    <h5>Gestionar Reservas</h5>
+                    <p class="small">Control de horarios y asistencia de clientes</p>
+                    <button class="btn btn-gold w-100">Ver Reservas</button>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex">
+                <div class="card-custom w-100" (click)="irAGestionarMesas()">
+                    <div class="card-icon">🪑</div>
+                    <h5>Gestión de Mesas</h5>
+                    <p class="small">Organiza el aforo y la disposición del local</p>
+                    <button class="btn btn-gold w-100">Configurar Mesas</button>
+                </div>
+            </div>
+
+            <div class="col-md-4 d-flex">
+                <div class="card-custom w-100" (click)="irAVerResenas()">
+                    <div class="card-icon">⭐</div>
+                    <h5>Reseñas Clientes</h5>
+                    <p class="small">Feedback y valoraciones de los usuarios</p>
+                    <button class="btn btn-gold w-100">Ver Reseñas</button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center pt-3 border-top flex-shrink-0">
+            <button class="btn btn-outline-light" (click)="logout()">
+                <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión Admin
+            </button>
+        </div>
+
+    </div>
+</div>

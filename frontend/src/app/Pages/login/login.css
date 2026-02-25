@@ -1,0 +1,120 @@
+:host {
+    display: block;
+    background-color: #1a1a1a;
+    min-height: 100vh;
+}
+
+.login-wrapper {
+    min-height: 100vh;
+    /* Centra el cuadro verticalmente */
+}
+
+.login-container {
+    max-width: 600px;
+    width: 80%;
+    border-radius: 20px;
+    border: 1px solid #444;
+    background-color: #242424 !important;
+    /* Gris oscuro elegante */
+}
+
+/* Estilo de los Labels */
+.form-label {
+    color: #e6dcc9;
+    /* Dorado */
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+}
+
+/* Estilo de los Inputs */
+.form-control {
+    background-color: #2b2b2b !important;
+    border: 1px solid #444;
+    color: white !important;
+    border-radius: 10px;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: #666;
+}
+
+.form-control:focus {
+    background-color: #333 !important;
+    border-color: #967435;
+    box-shadow: 0 0 1px #e6dcc9;
+    outline: none;
+}
+
+/* Contenedor de Password y botón del ojo */
+.password {
+    position: relative;
+}
+
+.password button {
+    position: absolute;
+    right: 15px;
+    top: 38px;
+    background: none;
+    border: none;
+    color: #e6dcc9;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.2s, opacity 0.2s;
+    display: flex;
+    align-items: center;
+}
+
+.password button i {
+    font-size: 1.2rem;
+}
+
+.password button:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+/* Botón de Enviar */
+.btn-warning {
+    padding: 0;
+    background: linear-gradient(45deg, #e6dcc9, #786460);
+    border: none;
+    border-radius: 12px;
+    color: #1a1a1a;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+}
+
+.login-container button[routerLink="/registro"] {
+    background: none;
+    border: none;
+    padding: 0;
+    font-weight: 500;
+    align-items: center;
+}
+
+.btn-link-custom {
+    background: none;
+    border: none;
+    padding: 0;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+}
+
+.btn-link-custom:hover {
+    text-decoration: underline !important;
+}
+
+.container-olvido {
+    margin-top: -15px ; 
+    position: relative;
+    z-index: 5;
+}
+
+.container-olvido .btn-link-custom {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}

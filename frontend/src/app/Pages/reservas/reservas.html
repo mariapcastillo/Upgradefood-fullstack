@@ -1,0 +1,105 @@
+<section class="reservas-page">
+    <header class="hero">
+        <div class="hero__top">
+            <button class="btn-nav" routerLink="/perfil-usuario">
+                <i class="bi bi-arrow-left me-2"></i> Volver al perfil
+            </button>
+        </div>
+        <div class="hero__content">
+            <p class="hero__kicker">UpgradeFood</p>
+            <h1 class="hero__title">Reserva tu mesa</h1>
+            <p class="hero__subtitle">
+                Elige día, mesa y comensales. Nosotros ponemos el sushi.
+            </p>
+        </div>
+    </header>
+
+    <main class="wrap">
+        <div class="card">
+            <div class="card__head">
+                <h2 class="card__title">Datos de la reserva</h2>
+                <p class="card__desc">Completa el formulario para asegurar tu sitio.</p>
+            </div>
+
+            <form class="form" [formGroup]="reservaForm" (ngSubmit)="onSubmit()">
+
+                <div class="grid">
+                    <div class="field">
+                        <label for="fecha">Fecha</label>
+                        <input id="fecha" type="date" formControlName="fecha" [min]="minDate" (change)="onFechaOrPersonasChange()" />
+                        @if(showError('fecha')) {
+                        <small class="error">Elige una fecha válida.</small>
+                        }
+                    </div>
+
+                    <div class="field">
+                        <label for="personas">Nº de personas</label>
+                        <input type="number" id="personas" formControlName="party_size" min="1" max="20" (change)="onFechaOrPersonasChange()">
+                    </div>
+                </div>
+
+                <!-- Mostrar mesa y hora solo después de seleccionar fecha y personas -->
+                @if (canShowMesasYHoras()) {
+                <div class="grid">
+                    <div class="field">
+                        <label for="mesa">Mesa disponible</label>
+                        <select id="mesa" formControlName="mesa_id">
+                            <option value="" disabled>Selecciona una mesa</option>
+                            @for (mesa of mesasDisponibles; track mesa.id) {
+                            <option [value]="mesa.id">
+                                Mesa {{ mesa.numero_mesa }} (Capacidad: {{ mesa.capacidad }} pers.)
+                            </option>
+                            }
+                        </select>
+                        @if(showError('mesa_id')) {
+                        <small class="error">Debes elegir una mesa.</small>
+                        }
+                    </div>
+
+                    <div class="field">
+                        <label for="hora">Hora</label>
+                        <select id="hora" formControlName="hora">
+                            <option value="" disabled>Selecciona hora</option>
+                            @for (h of horas; track h) {
+                            <option [value]="h">{{ h }}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                }
+
+                <div class="divider"></div>
+
+                <div class="field field--full">
+                    <label for="comentarios">Observaciones / Alergias</label>
+                    <textarea id="comentarios" rows="3" formControlName="resena"></textarea>
+                </div>
+
+                <div class="actions">
+                    <button type="button" class="btn btn--ghost" (click)="resetForm()">Limpiar</button>
+                    <button type="submit" class="btn btn--solid" [disabled]="loading || !canShowMesasYHoras()">
+                        {{ loading ? 'Enviando...' : 'Confirmar reserva' }}
+                    </button>
+                </div>
+
+                @if (message) {
+                <div class="result">
+                    <p [class.ok]="success" [class.bad]="!success">{{ message }}</p>
+                </div>
+                }
+            </form>
+        </div>
+
+        <aside class="side">
+            <div class="side-card">
+                <h3>Horario</h3>
+                <p>L–V: 12:00–23:00</p>
+                <p>Fines de semana hasta las 00:00</p>
+            </div>
+            <div class="side-card">
+                <h3>Info </h3>
+                <p>Consulta y getiona tus reservas desde tu panel de usuario</p>
+            </div>
+        </aside>
+    </main>
+</section>

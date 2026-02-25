@@ -1,0 +1,16 @@
+<div class="container py-4">
+    <div class="mb-4">
+        <button class="btn btn-outline-warning" (click)="volver()">
+            <i class="bi bi-arrow-left me-2"></i>
+            {{ isAdmin() ? 'Volver al Panel' : 'Volver a Mis Reservas' }}
+        </button>
+    </div>
+
+    <div class="card border-0 shadow-lg p-4" style="background-color: #242424; border-radius: 20px;">
+        <h2 class="text-white mb-4 text-center">Calendario de <span style="color: #ffc107;">Reservas</span></h2>
+
+        <div class="calendar-wrapper">
+            <full-calendar [options]="calendarOptions()"></full-calendar>
+        </div>
+    </div>
+</div>

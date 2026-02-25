@@ -1,0 +1,48 @@
+
+
+<div class="card bg-dark text-white border-warning p-4 shadow-lg">
+    <div class="text-center mb-4">
+        <h2 class="display-5 text-warning">{{ datos().menu.titulo }}</h2>
+        <p class="lead">{{ datos().menu.descripcion }}</p>
+        <span class="badge bg-success fs-4">{{ datos().menu.precio }}€</span>
+    </div>
+
+    <div class="row g-3">
+        @for (plato of datos().platos; track plato.id) {
+        <div class="col-md-4">
+            <div class="card h-100 bg-secondary border-0 shadow-sm d-flex flex-column"
+                style="border-radius: 15px; overflow: hidden;">
+
+                <div class="card-img-top-container">
+                    <img [src]="plato.imagen_url" class="card-img-top" [alt]="plato.nombre">
+                </div>
+
+                <div class="card-body d-flex flex-column">
+                    <h6 class="text-uppercase text-warning fw-bold mb-1"
+                        style="font-size: 0.75rem; letter-spacing: 1px;">
+                        {{ plato.rol }}
+                    </h6>
+
+                    <h5 class="card-title text-white mb-2">{{ plato.nombre }}</h5>
+
+                    <p class="card-text small text-white-50 flex-grow-1" style="line-height: 1.4;">
+                        {{ plato.descripcion }}
+                    </p>
+
+                    <div class="mt-3">
+                        <button (click)="onVerPlato.emit(plato.id)"
+                            class="btn btn-outline-warning btn-sm w-100 fw-bold text-uppercase py-2"
+                            style="border-radius: 8px; font-size: 0.8rem; transition: all 0.3s ease;">
+                            <i class="bi bi-info-circle me-2"></i> Especificaciones
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        } @empty {
+        <div class="col-12 text-center py-5">
+            <p class="text-white-50 fs-5">No hay platos configurados para este menú.</p>
+        </div>
+        }
+    </div>
+</div>

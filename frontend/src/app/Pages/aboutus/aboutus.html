@@ -1,0 +1,65 @@
+<main class="about-page">
+<section class="about-hero">
+    <div class="container text-center">
+
+      
+        <div class="back-link">
+            <a routerLink="/landing">
+                ← Volver al inicio
+            </a>
+        </div>
+        <span class="kicker">UpgradeFood</span>
+        <h1>Quiénes <span class="gold-text">Somos</span></h1>
+        <p class="lead">
+            Somos un equipo pequeño con una idea clara: cocina japonesa auténtica,
+            trato cercano y detalles cuidados.
+        </p>
+
+    </div>
+</section>
+
+
+    <section class="team-section">
+        <div class="container">
+            <h2 class="section-title">Nuestro <span>Equipo</span></h2>
+
+            @for (miembro of team(); track miembro.id) {
+
+            <article class="team-card">
+
+                <div class="team-photo">
+                    <img [src]="miembro.foto" [alt]="miembro.nombre">
+                </div>
+
+                <div class="team-body">
+
+                    <div class="team-top">
+                        <h3 class="team-name">{{ miembro.nombre }}</h3>
+                        <span class="team-role">{{ miembro.rol }}</span>
+                    </div>
+
+                    <p class="team-text">
+                        {{ miembro.descripcion }}
+                    </p>
+
+                    <ul class="team-tags">
+                        @for (tag of miembro.tags; track tag) {
+                        <li>{{ tag }}</li>
+                        }
+                    </ul>
+
+                </div>
+
+            </article>
+
+            } @empty {
+
+            <p class="text-white-50 text-center">Equipo próximamente disponible.</p>
+
+            }
+
+        </div>
+    </section>
+
+</main>
+

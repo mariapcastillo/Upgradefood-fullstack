@@ -1,0 +1,62 @@
+/* Fondo negro total para toda la página del componente */
+:host {
+    display: block;
+    min-height: 100vh;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+/* El contenedor principal */
+.container {
+    background-color: transparent;
+}
+
+/* Título con el dorado de admin */
+h2 {
+    color: #ffc107 !important;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* LA TABLA: */
+.table-responsive {
+    background-color: #0a0a0a !important;
+    border: 1px solid rgba(220, 53, 69, 0.5);
+    box-shadow: 0 0 20px rgba(220, 53, 69, 0.2);
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Estilo para las filas de la tabla */
+.table {
+    margin-bottom: 0;
+    color: #e0e0e0;
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(255, 193, 7, 0.05) !important;
+    transition: background-color 0.3s ease;
+}
+
+/* Cabecera de la tabla */
+thead {
+    background-color: #121212;
+}
+
+/* Ajuste de los bordes internos */
+.table td,
+.table th {
+    border-color: #222;
+    padding: 1rem;
+}
+
+/* Personalización del scroll si la tabla es muy larga */
+.table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-responsive::-webkit-scrollbar-thumb {
+    background: #dc3545;
+    border-radius: 10px;
+}

@@ -1,0 +1,79 @@
+<div class="container py-5">
+    <button class="btn btn-outline-warning mb-4" routerLink="/admin">
+        <i class="bi bi-arrow-left me-2"></i> Volver al Panel Admin
+    </button>
+
+    <div class="row">
+        <div [class]="showForm ? 'col-md-7' : 'col-md-12'" class="transition-all">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="text-white">Gestión de Mesas</h2>
+                <button class="btn btn-warning fw-bold" (click)="abrirFormulario('crear')">
+                    <i class="bi bi-plus-circle me-2"></i>Nueva Mesa
+                </button>
+            </div>
+
+            <div class="row g-3">
+                @for(mesa of arrTables(); track mesa.id) {
+                <div [class]="showForm ? 'col-lg-6 col-md-12' : 'col-lg-4 col-md-6'">
+                    <div class="card h-100 bg-dark text-white border-2"
+                        [style.border-color]="mesa.capacidad > 4 ? '#ffc107' : (mesa.capacidad > 2 ? '#0dcaf0' : '#6c757d')">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h5 class="card-title text-warning">Mesa nº {{mesa.numero_mesa}}</h5>
+                                    <p class="card-text"><i class="bi bi-people me-2"></i>Capacidad: {{mesa.capacidad}}
+                                        pers.</p>
+                                </div>
+                            </div>
+                            <div class="mt-3 d-flex gap-2">
+                                <button class="btn btn-sm btn-outline-light" (click)="abrirFormulario('editar', mesa)">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-danger" (click)="eliminarMesa(mesa.id)">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                } @empty {
+                <div class="col-12 text-center text-muted py-5">
+                    <p>No hay mesas configuradas.</p>
+                </div>
+                }
+            </div>
+        </div>
+
+        @if (showForm) {
+        <div class="col-md-5">
+            <div class="form-sticky-card shadow-lg p-4 rounded bg-dark border border-warning">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3 class="text-warning m-0">{{ editMode ? 'Editar Mesa' : 'Nueva Mesa' }}</h3>
+                    <button class="btn-close btn-close-white" (click)="showForm = false"></button>
+                </div>
+
+                <form (ngSubmit)="guardar()">
+                    <div class="mb-3">
+                        <label class="form-label text-white">Número de Mesa</label>
+                        <input type="number" class="form-control" [(ngModel)]="mesaSeleccionada.numero_mesa"
+                            name="numero" [disabled]="editMode">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label text-white">Capacidad de Personas</label>
+                        <input type="number" class="form-control" [(ngModel)]="mesaSeleccionada.capacidad"
+                            name="capacidad">
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-warning fw-bold">
+                            {{ editMode ? 'Actualizar' : 'Crear' }}
+                        </button>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" (click)="showForm = false">
+                            Cancelar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        }
+    </div>
+</div>

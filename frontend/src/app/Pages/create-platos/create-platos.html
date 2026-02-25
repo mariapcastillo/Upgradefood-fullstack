@@ -1,0 +1,79 @@
+
+
+
+<div class="form-container">
+    <div class="form-box">
+        <h2 class="text-warning text-center mb-4">AÑADIR / MODIFICAR PLATO</h2>
+
+        <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Nombre del Plato</label>
+                    <input type="text" formControlName="nombre" class="form-control" placeholder="Ej: Nigiri de Salmón">
+                </div>
+
+                <div class="col-md-6 mb-3">
+                    <label class="form-label">Categoría</label>
+                    <select formControlName="categoria" class="form-select">
+                        <option value="" disabled selected>Selecciona una...</option>
+                        <option value="entrante">Entrante</option>
+                        <option value="sashimi">Sashimi</option>
+                        <option value="nigiri">Nigiri</option>
+                        <option value="maki">Maki</option>
+                        <option value="bao">Bao</option>
+                        <option value="postre">Postre</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Descripción</label>
+                <textarea formControlName="descripcion" class="form-control" rows="2"></textarea>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <label class="form-label">Precio (€)</label>
+                    <input type="number" formControlName="precio" class="form-control" step="0.10">
+                </div>
+                <div class="col-md-8 mb-3">
+                    <label class="form-label">Alérgenos</label>
+                    <input type="text" formControlName="alergenos" class="form-control"
+                        placeholder="Ej: Pescado, Gluten...">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Ingredientes</label>
+                <input type="text" formControlName="ingredientes" class="form-control">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Información Nutricional</label>
+                <input type="text" formControlName="info_nutricional" class="form-control"
+                    placeholder="Ej: 150 kcal por ración">
+            </div>
+
+            <div class="mb-4">
+                <label class="form-label">Imagen del Plato</label>
+                <input type="file" (change)="onFileSelected($event)" class="form-control" accept="image/*">
+                @if (imagenUrlSubida) {
+                <div class="mt-2 text-center">
+                    <img [src]="imagenUrlSubida" class="preview-img" alt="Vista previa">
+                </div>
+                }
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-warning fw-bold btn-lg"
+                    [disabled]="!registroForm.get('nombre')?.value || !imagenUrlSubida">
+                    GUARDAR PLATO
+                </button>
+                <button type="button" class="btn btn-outline-secondary" (click)="router.navigate(['/lista_platos'])">
+                    CANCELAR
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
