@@ -63,7 +63,7 @@ ng serve
 https://upgradefood.web.app/
 
 [![Ver demo](https://img.shields.io/badge/Video-Demo-blue?style=for-the-badge)](https://drive.google.com/file/d/1RwHF03A99R0F-DvGwv56SQ-I-843ceuT/view?usp=sharing)
-[![Demo](docs/demo_preview.png)](https://drive.google.com/file/d/1RwHF03A99R0F-DvGwv56SQ-I-843ceuT/view?usp=sharing)
+
 ---
 
 ## Autora
